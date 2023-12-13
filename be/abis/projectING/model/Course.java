@@ -8,12 +8,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Course {
+    private int id;
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
+    // Each course has a list of session registrations (1 per day of the course)
     private List<SessionRegistration> sessionRegistrations;
-    private int id;
 
+    // Default constructor initializes session registrations list but does not yet populate it
+    // They should be populated elsewhere since the instructor can vary between session registrations
     public Course(int id, String name, LocalDate startDate, LocalDate endDate) {
         this.id = id;
         this.name = name;
@@ -58,6 +61,7 @@ public class Course {
         this.endDate = endDate;
     }
 
+    // Method to add a session registration to the course. Could contain logic to verify no duplicates in a further version
     public void addRegistrationToCourse(SessionRegistration registration){
         this.sessionRegistrations.add(registration);
     }
@@ -67,6 +71,7 @@ public class Course {
         return String.format("Course title: %s has %d session registrations. The first day is %s%n", this.name, this.getSessionRegistrations().size(), this.startDate);
     }
 
+    // Method to generate the total sum of the prices for sandwich orders of each individual session registration
     public double getTotalPriceForCourse(){
         return this.sessionRegistrations.stream()
                 .map(SessionRegistration::getOrder)

@@ -9,6 +9,13 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Repository for courses + session registrations
+This repository contains test data for both, since session registrations cannot exist independently from courses
+During repository creation, a new list of courses is initialised.
+For each course, a list of session registrations is also automatically generated (see method 'generateRegistrationsForCourse')
+It also already contains some helper methods that can be useful down the line
+ */
 public class CoursesRegistrationsRepository {
     private List<Course> courseList;
     public CoursesRegistrationsRepository(){
@@ -46,7 +53,8 @@ public class CoursesRegistrationsRepository {
         }
     }
 
-    private void generateRegistrationsForCourse(Course c, Person p){
+    // Helper method to generate session registrations for a given course: 1 registration is generated for each course day
+    public void generateRegistrationsForCourse(Course c, Person p){
         for(int i = 0; i <= ChronoUnit.DAYS.between(c.getStartDate(), c.getEndDate()); i++){
             c.addRegistrationToCourse(new SessionRegistration(c, p, c.getStartDate().plusDays(i)));
         }
@@ -56,6 +64,7 @@ public class CoursesRegistrationsRepository {
         return courseList;
     }
 
+    // Helper method to return a course based on ID reference. Default test data contains IDs 1 to 4
     public Course getCourseById(int id){
         for(Course c:courseList){
             if(c.getId() == id){
@@ -65,16 +74,14 @@ public class CoursesRegistrationsRepository {
         return null;
     }
 
-    public void setCourseList(List<Course> courseList) {
-        this.courseList = courseList;
-    }
-
+    // Return all courses for a given year. Can later be used to calculate order total for a year
     public List<Course> getAllCoursesForYear(int year){
         return courseList.stream()
                 .filter(c -> c.getStartDate().getYear() == year)
                 .toList();
     }
 
+    // Helper method to get a list of all session registrations for a course based on course ID
     public List<SessionRegistration> getSessionRegistrationsForCourse(int id){
         return courseList.stream()
                 .filter(c -> c.getId() == id)
@@ -83,6 +90,8 @@ public class CoursesRegistrationsRepository {
                 .get().getSessionRegistrations();
     }
 
+    // Method to add a new course to the list, with a check that ID is not duplicated
+    // Throws a custom exception in case a course with the given ID already exists
     public void addCourseToList(Course c) throws CourseAlreadyExistsException {
         for(Course entry:this.courseList){
             if (entry.getId() == c.getId()){
