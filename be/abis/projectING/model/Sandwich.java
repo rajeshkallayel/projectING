@@ -1,29 +1,27 @@
-package be.abis.projectING.model;
+package model;
 
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Represents a sandwich class with sandwichId, name, and price.
- */
 public class Sandwich {
-    private int sandwichId;
     private String name;
     private double price;
+    private Map<Language, String> namesInLanguages;
 
-    /**
-     * Constructs a Sandwich with the given attributes.
-     *
-     * @param sandwichId The unique identifier for the sandwich.
-     * @param name       The name of the sandwich.
-     * @param price      The price of the sandwich.
-     */
-    public Sandwich(int sandwichId, String name, double price) {
-        this.sandwichId = sandwichId;
-        this.name = name;
-        this.price = price;
+    public Sandwich(String langp, String type, String name, String description, Double price) {
+
     }
 
-    public int getSandwichId() {
-        return sandwichId;
+    public enum Language {
+        ENGLISH,
+        SPANISH,
+        FRENCH
+    }
+
+    public Sandwich(String name, double price) {
+        this.name = name;
+        this.price = price;
+        this.namesInLanguages = new HashMap<>();
     }
 
     public String getName() {
@@ -34,14 +32,15 @@ public class Sandwich {
         return price;
     }
 
-    @Override
-    public String toString() {
-        return "Sandwich{" +
-                "sandwichId=" + sandwichId +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+    public void setNameInLanguage(Language language, String translatedName) {
+        namesInLanguages.put(language, translatedName);
     }
+
+    public String getNameInLanguage(Language language) {
+        return namesInLanguages.get(language);
+    }
+}
+
 
 
 }
