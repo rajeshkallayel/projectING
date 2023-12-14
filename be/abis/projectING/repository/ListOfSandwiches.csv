@@ -1,0 +1,27 @@
+FR;Viandes;Jambon;;3.5
+FR;Fromage;Gouda;;3.5
+FR;Fromage;Brie;;3.8
+FR;Poisson;Salade de crevettes;;4
+FR;Poisson;Salade de thon;;3.8
+FR;Specials;Pinky;(Salade tomates oeufs filet de hareng tartare);5
+FR;Specials;Hawaiien;(Ananas jambon fromage sauce de cocktail);6
+FR;Végétarian;Maya;(Roquette brie miel pêche);4.5
+FR;Végétarian;Fromage du chêvre;(Fromage de chèvre miel noix ananas);3
+EN;Meat;Ham;;3.5
+EN;Cheese;Gouda;;3.5
+EN;Cheese;Brie;;3.8
+EN;Fish;Shrimp salad;;4
+EN;Fish;Tuna salad;;3.8
+EN;Specials;Pinky;(Tomato and egg salad with herring tartar fillet);5
+EN;Specials;Hawaiien;(Pineapple ham cheese cocktail sauce);6
+EN;Vegetables;Maya;(Arugula brie honey peach);4.5
+EN;Vegetables;Goat cheese;(Goat cheese honey walnuts pineapple);3
+NL;Vlees;Ham;;3.5
+NL;Kaas;Gouda;;3.5
+NL;Kaas;Brie;;3.8
+NL;Vis;Garnalensalade;;4
+NL;Vis;Tonijnsalade;;3.8
+NL;Specials;Pinky;(Tomaat en eiersalade met haringtartaar);5
+NL;Specials;Hawaiien;(Ananas ham kaas cocktailsaus);6
+NL;Vegetarisch;Maya;(Rucola brie honing perzik);4.5
+NL;Vegetarisch;Fromage du chèvre;(Geitenkaas honing walnoten ananas);3
